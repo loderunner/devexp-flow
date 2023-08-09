@@ -1,0 +1,11 @@
+{
+  "name": "devexp-flow",
+  "version": "1.0.0",
+  "description": "A repo to demonstrate our git workflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charles Francoise <charles.francoise@circleci.com>",
+  "license": "UNLICENSED"
+}
