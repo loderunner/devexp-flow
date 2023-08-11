@@ -1,1 +1,1 @@
-console.log(`${new Date()} - Hello, World!`);
+console.log(`${new Date()} - Hello World!`);
