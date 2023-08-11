@@ -5,11 +5,23 @@ jobs:
     docker:
       - image: cimg/node:20.2.0
     steps:
+      - run: npm ci
       - run: |
           npx release-please release-pr \
             --token $GITHUB_TOKEN \
             --repo-url $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME \
             --target-branch $CIRCLE_BRANCH \
+            --config-file .circleci/release/release-please-config.json \
+            --manifest-file .circleci/release/release-please-manifest.json
+  github-release:
+    docker:
+      - image: cimg/node:20.2.0
+    steps:
+      - run: npm ci
+      - run: |
+          npx release-please github-release \
+            --token $GITHUB_TOKEN \
+            --repo-url $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME \
             --config-file .circleci/release/release-please-config.json \
             --manifest-file .circleci/release/release-please-manifest.json
 
@@ -18,6 +30,15 @@ workflows:
     jobs:
       - release-pr:
           name: Create or update release PR
-    filters:
-      branches:
-        - main
+          filters:
+            branches:
+              only: main
+  GitHub release:
+    jobs:
+      - github-release:
+          name: Create github release
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+/
+            branches:
+              ignore: /.*/
