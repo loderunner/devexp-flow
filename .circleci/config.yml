@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/node:20.2.0
     steps:
+      - checkout
       - run: npm ci
       - run: |
           npx release-please release-pr \
@@ -17,6 +18,7 @@ jobs:
     docker:
       - image: cimg/node:20.2.0
     steps:
+      - checkout
       - run: npm ci
       - run: |
           npx release-please github-release \
