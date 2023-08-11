@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/loderunner/devexp-flow/compare/1.1.0...1.1.1) (2023-08-11)
+
+
+### Bug Fixes
+
+* remove comma ([c3fd559](https://github.com/loderunner/devexp-flow/commit/c3fd559e7cae8cfc33e7367f19fd93b085f23faa))
+
 ## [1.1.0](https://github.com/loderunner/devexp-flow/compare/1.0.0...1.1.0) (2023-08-11)
 
 
