@@ -34,11 +34,15 @@ workflows:
           name: Create or update release PR
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - /hotfix.*/
   GitHub release:
     jobs:
       - github-release:
           name: Create github release
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - /hotfix.*/
