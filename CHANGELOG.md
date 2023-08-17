@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/loderunner/devexp-flow/compare/1.1.1...1.2.0) (2023-08-11)
+
+### Bug Fixes
+
+* use ISO timestamp ([#9](https://github.com/loderunner/devexp-flow/issues/9)) ([f6a5870](https://github.com/loderunner/devexp-flow/commit/f6a587085ed96bf2a319265c1a346dfbda9a9867))
+
 ## [1.1.1](https://github.com/loderunner/devexp-flow/compare/1.1.0...1.1.1) (2023-08-11)
 
 
