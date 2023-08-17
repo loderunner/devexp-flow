@@ -14,6 +14,7 @@ jobs:
             --target-branch $CIRCLE_BRANCH \
             --config-file .circleci/release/release-please-config.json \
             --manifest-file .circleci/release/release-please-manifest.json
+
   github-release:
     docker:
       - image: cimg/node:20.2.0
@@ -28,7 +29,26 @@ jobs:
             --config-file .circleci/release/release-please-config.json \
             --manifest-file .circleci/release/release-please-manifest.json
 
+  lint-pr:
+    docker:
+      - image: cimg/node:20.2.0
+    steps:
+      - checkout
+      - run: npm ci
+      - run:
+          name: Install GitHub CLI
+          command: |
+            curl -OL https://github.com/cli/cli/releases/download/v2.32.1/gh_2.32.1_linux_amd64.deb
+            sudo dpkg -i gh_2.32.1_linux_amd64.deb
+      - run:
+          name: Lint PR title
+          command: gh pr view --json title --jq .title | npx commitlint
+
 workflows:
+  Lint-test-build:
+    jobs:
+      - lint-pr
+
   Prepare release:
     jobs:
       - release-pr:
