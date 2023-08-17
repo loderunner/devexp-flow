@@ -44,6 +44,21 @@ jobs:
           name: Lint PR title
           command: gh pr view --json title --jq .title | npx commitlint
 
+  auto-assign-pr:
+    docker:
+      - image: cimg/node:20.2.0
+    steps:
+      - checkout
+      - run: npm ci
+      - run:
+          name: Install GitHub CLI
+          command: |
+            curl -OL https://github.com/cli/cli/releases/download/v2.32.1/gh_2.32.1_linux_amd64.deb
+            sudo dpkg -i gh_2.32.1_linux_amd64.deb
+      - run:
+          name: Lint PR title
+          command: gh pr view --json creator --jq .creator | xargs gh pr edit --add-assignee
+
 workflows:
   Lint-test-build:
     jobs:
