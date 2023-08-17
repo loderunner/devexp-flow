@@ -33,16 +33,16 @@ jobs:
     docker:
       - image: cimg/node:20.2.0
     steps:
-      - checkout
-      - run: npm ci
       - run:
           name: Install GitHub CLI
           command: |
             curl -OL https://github.com/cli/cli/releases/download/v2.32.1/gh_2.32.1_linux_amd64.deb
             sudo dpkg -i gh_2.32.1_linux_amd64.deb
+      - checkout
+      - run: npm ci
       - run:
           name: Lint PR title
-          command: gh pr view
+          command: gh pr view | npx commitlint
 
 workflows:
   Lint-test-build:
