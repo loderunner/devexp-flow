@@ -42,7 +42,7 @@ jobs:
             sudo dpkg -i gh_2.32.1_linux_amd64.deb
       - run:
           name: Lint PR title
-          command: gh pr view | npx commitlint
+          command: gh pr view --json title --jq .title | npx commitlint
 
 workflows:
   Lint-test-build:
