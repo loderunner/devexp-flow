@@ -1,6 +1,6 @@
 {
   "name": "devexp-flow",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A repo to demonstrate our git workflow",
   "main": "index.js",
   "scripts": {
