@@ -56,8 +56,8 @@ jobs:
             curl -OL https://github.com/cli/cli/releases/download/v2.32.1/gh_2.32.1_linux_amd64.deb
             sudo dpkg -i gh_2.32.1_linux_amd64.deb
       - run:
-          name: Lint PR title
-          command: gh pr view --json creator --jq .creator | xargs gh pr edit --add-assignee
+          name: Assign PR to author
+          command: gh pr view --json author --jq .author.login | xargs gh pr edit --add-assignee
 
 workflows:
   Lint-test-build:
