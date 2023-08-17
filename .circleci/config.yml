@@ -62,8 +62,18 @@ jobs:
 workflows:
   Lint-test-build:
     jobs:
-      - lint-pr
-      - auto-assign-pr
+      - lint-pr:
+          filters:
+            branches:
+              ignore:
+                - main
+                - /hotfix.*/
+      - auto-assign-pr:
+          filters:
+            branches:
+              ignore:
+                - main
+                - /hotfix.*/
 
   Prepare release:
     jobs:
